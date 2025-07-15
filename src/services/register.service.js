@@ -1,14 +1,15 @@
 const ErrorResponse = require('../utils/ErrorResponse')
+const jwt = require('jsonwebtoken')
 // .env
-const { ADMIN_USERNAME, ADMIN_PASSWORD } = process.env
+const { ADMIN_USERNAME, ADMIN_PASSWORD, JWT_SECRET, JWT_EXPIRES_IN } = process.env
 
 // POST: /admin-register
-exports.register = async (req, admin) => {
+exports.register = async (admin) => {
     const { username, password } = admin
 
     if (username === ADMIN_USERNAME && password === ADMIN_PASSWORD) {
-        req.session.isAdmin = true
-        return { success: true, message: 'You was registered successfully' }
+        const token = jwt.sign({ isAdmin: true }, JWT_SECRET, { expiresIn: JWT_EXPIRES_IN })
+        return { success: true, message: 'Registered successful', token }
     }
 
     throw new ErrorResponse('Incorrect username or password, please try again', 401)
@@ -16,10 +17,5 @@ exports.register = async (req, admin) => {
 
 // POST: /admin-logout
 exports.logout = async (session) => {
-    return new Promise((resolve, reject) => {
-        session.destroy(err => {
-            if (err) return reject(new ErrorResponse('Logout was not successful', 500))
-            resolve({ success: true, message: 'Logout was successful' })
-        })
-    })
+    return { success: true, message: 'Logout successful (remove token on frontend)' }
 }
