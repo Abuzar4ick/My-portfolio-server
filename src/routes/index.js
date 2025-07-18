@@ -6,5 +6,6 @@ module.exports = {
     educationRoute: require('./education.route'),
     skillRoute: require('./skill.route'),
     softSkillRoute: require('./softSkill.route'),
-    registerRoute: require('./register.route')
+    registerRoute: require('./register.route'),
+    dashboardRoute: require('./dashboard.route')
 }

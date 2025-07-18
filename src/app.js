@@ -10,7 +10,8 @@ const {
   educationRoute,
   skillRoute,
   softSkillRoute,
-  registerRoute
+  registerRoute,
+  dashboardRoute
 } = require('./routes')
 
 app.use(express.json())
@@ -25,7 +26,8 @@ app.use('/api',
   educationRoute,
   skillRoute,
   softSkillRoute,
-  registerRoute
+  registerRoute,
+  dashboardRoute
 )
 
 // Error handler

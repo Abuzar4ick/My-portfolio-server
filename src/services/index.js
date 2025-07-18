@@ -6,5 +6,6 @@ module.exports = {
     educationService: require('./education.service'),
     skillService: require('./skill.service'),
     softSkillService: require('./softSkill.service'),
-    registerService: require('./register.service')
+    registerService: require('./register.service'),
+    dashboardService: require('./dashboard.service')
 }
