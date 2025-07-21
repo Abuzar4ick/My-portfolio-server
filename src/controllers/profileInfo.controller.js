@@ -4,6 +4,7 @@ const asyncHandler = require('../utils/asyncHandler')
 // POST: /profile/info
 // For: admin
 exports.newProfile = asyncHandler(async (req, res, next) => {
+    console.log('Hello')
     const response = await profileInfoService.createInfo(req.body, req.file.filename)
     res.status(201).json(response)
 })
