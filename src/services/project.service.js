@@ -5,7 +5,7 @@ const { cloudinary } = require('../storage/cloudinary')
 // POST: /projects
 // For: admin
 exports.createProject = async (project, image) => {
-    const { title, role, stack, overview, challenge } = project
+    let { title, role, stack, overview, challenge } = project
 
     if (!Array.isArray(stack)) stack = [stack];
 
