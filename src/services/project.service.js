@@ -5,15 +5,9 @@ const { cloudinary } = require('../storage/cloudinary')
 // POST: /projects
 // For: admin
 exports.createProject = async (project, image) => {
-    let { title, role, stack, overview, challenge } = project
+    const { title, role, stack, overview, challenge } = project
 
-    const stackArray = Array.isArray(stack)
-        ? stack
-        : typeof stack === 'string'
-            ? stack.split(' ')
-            : []
-
-    await Project.create({ title, role, stack: stackArray, overview, challenge, image })
+    await Project.create({ title, role, stack, overview, challenge, image })
     return { success: true, message: 'New project created successfully' }
 }
 
