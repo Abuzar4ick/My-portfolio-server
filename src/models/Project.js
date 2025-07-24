@@ -5,15 +5,15 @@ const Project = new Schema({
         type: String,
         required: true
     },
-    tags: { // web, backend ...
-        type: [String],
-        required: true 
+    role: {
+        type: String,
+        required: true
     },
     image: {
         type: String,
         required: true
     },
-    key_words: { // file upload, rest API ...
+    stack: {
         type: [String],
         required: true
     },
