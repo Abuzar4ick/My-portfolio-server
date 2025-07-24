@@ -6,8 +6,9 @@ const { cloudinary } = require('../storage/cloudinary')
 // For: admin
 exports.createProject = async (project, image) => {
     const { title, role, stack, overview, challenge } = project
+    const parsedStack = JSON.parse(stack)
 
-    await Project.create({ title, role, stack, overview, challenge, image })
+    await Project.create({ title, role, parsedStack, overview, challenge, image })
     return { success: true, message: 'New project created successfully' }
 }
 
