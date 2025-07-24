@@ -3,7 +3,7 @@ const asyncHandler = require('../utils/asyncHandler')
 
 // POST: /projects
 exports.newProject = asyncHandler(async (req, res, next) => {
-    const response = await projectService.createProject(req.body)
+    const response = await projectService.createProject(req.body, req.file.filename)
     res.status(201).json(response)
 })
 
