@@ -16,7 +16,7 @@ exports.createProject = async (project, image) => {
 // For: admin
 exports.deleteProject = async (id) => {
     const deletedProject = await Project.findByIdAndDelete(id)
-    if (deletedProject) throw new ErrorResponse('Project not found', 404);
+    if (!deletedProject) throw new ErrorResponse('Project not found', 404);
 
     if (deletedProject.image) await cloudinary.uploader.destroy(deletedProject.image);
     return { success: true, message: 'Project deleted successfully' }
