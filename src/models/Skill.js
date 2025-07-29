@@ -13,9 +13,7 @@ const Skill = new Schema({
         type: String
     },
     projects: {
-        type: Number,
-        required: true,
-        minimum: 1
+        type: Number
     }
 })
 
