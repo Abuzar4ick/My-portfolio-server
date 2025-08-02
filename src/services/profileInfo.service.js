@@ -21,8 +21,7 @@ exports.updateProfile = async (profile, image) => {
     const profileInfo = await ProfileInfo.findOne()
 
     if (profileInfo) {
-        if (profileInfo.image) await cloudinary.uploader.destroy(user.image);
-        profileInfo.image = newAvatar
+        await cloudinary.uploader.destroy(profileInfo.image)
     }
 
     await ProfileInfo.findByIdAndUpdate(profileInfo._id, { full_name, role, experience, satisfied_clients, completed_projects, bio, image }, { new: true })

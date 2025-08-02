@@ -16,6 +16,6 @@ exports.register = async (admin) => {
 }
 
 // POST: /admin-logout
-exports.logout = async (session) => {
+exports.logout = async () => {
     return { success: true, message: 'Logout successful (remove token on frontend)' }
 }

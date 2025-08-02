@@ -9,6 +9,6 @@ exports.register = asyncHandler(async (req, res, next) => {
 
 // POST: /admin-logout
 exports.logout = asyncHandler(async (req, res, next) => {
-    const response = await registerService.logout(req.session)
+    const response = await registerService.logout()
     res.status(200).json(response)
 })
