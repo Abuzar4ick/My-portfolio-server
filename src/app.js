@@ -17,12 +17,17 @@ const {
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
-app.use(helmet())
+app.use(
+  helmet({
+    contentSecurityPolicy: false,
+    crossOriginEmbedderPolicy: false
+  })
+)
 app.use(
   cors({
     origin: [
       'https://abuzarr.netlify.app',
-      'http://localhost:5173/'
+      'http://localhost:5173'
     ],
     credentials: true,
     allowedHeaders: ['Content-Type', 'Authorization'],
