@@ -1,6 +1,7 @@
 const express = require('express')
 const app = express()
 const cors = require('cors')
+const helmet = require('helmet')
 const errorHandler = require('./middlewares/errorHandler')
 const {
   profileInfoRoute,
@@ -16,9 +17,13 @@ const {
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
+app.use(helmet())
 app.use(
   cors({
-    origin: 'https://abuzarr.netlify.app',
+    origin: [
+      'https://abuzarr.netlify.app',
+      'http://localhost:5173/'
+    ],
     credentials: true,
     allowedHeaders: ['Content-Type', 'Authorization'],
     methods: ['GET', 'POST', 'DELETE', 'PUT']
